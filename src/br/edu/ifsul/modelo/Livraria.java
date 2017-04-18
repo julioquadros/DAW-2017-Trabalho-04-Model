@@ -98,14 +98,6 @@ public class Livraria implements Serializable {
         this.site = site;
     }
 
-//    public List<Catalogo> getCatalogos() {
-//        return catalogos;
-//    }
-//
-//    public void setCatalogos(List<Catalogo> catalogos) {
-//        this.catalogos = catalogos;
-//    }
-
     public List<Catalogo> getCatalogos() {
         return catalogos;
     }

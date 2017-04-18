@@ -16,10 +16,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -43,6 +46,11 @@ public class Catalogo implements Serializable{
     private String descricao;
     @OneToMany(mappedBy = "catalogo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Livro> livros = new ArrayList<>();
+    @NotNull(message = "O catalogo não pode ser nulo")
+    @ManyToOne
+    @JoinColumn(name = "livraria", referencedColumnName = "id", nullable = false)
+    @ForeignKey(name = "fk_catalogo_livraria_id")
+    private Livraria livraria;
 
     @Override
     public int hashCode() {
@@ -112,6 +120,14 @@ public class Catalogo implements Serializable{
 
     public void setLivros(List<Livro> livros) {
         this.livros = livros;
+    }
+
+    public Livraria getLivraria() {
+        return livraria;
+    }
+
+    public void setLivraria(Livraria livraria) {
+        this.livraria = livraria;
     }
     
     

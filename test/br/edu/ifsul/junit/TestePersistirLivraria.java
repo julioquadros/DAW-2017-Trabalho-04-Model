@@ -43,8 +43,9 @@ public class TestePersistirLivraria {
             l.setNome("Teste Livraria");
             l.setSite("http://www.livraria.com.br");
             Catalogo c = new Catalogo();
-            c.setDescricao("Teste Catalogo");
-            c.setNome("Nome do Catalogo");
+            c.setDescricao("Catalogo de Livros do Google");
+            c.setNome("Google Scholar");
+            c.setLivraria(l);
             l.getCatalogos().add(c);
             em.getTransaction().begin();
             em.persist(l);
