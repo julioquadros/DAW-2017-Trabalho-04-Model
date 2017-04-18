@@ -42,9 +42,8 @@ public class Livraria implements Serializable {
     @NotBlank(message = "O site não pode ser em branco")
     @Column(name = "site", length = 100, nullable = false)
     private String site;
-//    @OneToMany(mappedBy = "catalogo", cascade = CascadeType.ALL,
-//            orphanRemoval = true, fetch = FetchType.LAZY)
-//    private List<Catalogo> catalogos = new ArrayList<>();
+    @OneToMany(mappedBy = "livraria", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Catalogo> catalogos = new ArrayList<>();
 
     @Override
     public int hashCode() {
@@ -106,4 +105,12 @@ public class Livraria implements Serializable {
 //    public void setCatalogos(List<Catalogo> catalogos) {
 //        this.catalogos = catalogos;
 //    }
+
+    public List<Catalogo> getCatalogos() {
+        return catalogos;
+    }
+
+    public void setCatalogos(List<Catalogo> catalogos) {
+        this.catalogos = catalogos;
+    }
 }

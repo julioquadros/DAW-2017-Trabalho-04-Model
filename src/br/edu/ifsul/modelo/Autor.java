@@ -45,9 +45,7 @@ public class Autor implements Serializable {
             joinColumns
             = @JoinColumn(name = "autor", referencedColumnName = "id", nullable = false),
             inverseJoinColumns
-            = @JoinColumn(name = "livro_basico", referencedColumnName = "isbn", nullable = false),
-            uniqueConstraints = {
-            @UniqueConstraint(columnNames = {"autor", "livro_basico"})})
+            = @JoinColumn(name = "livro_basico", referencedColumnName = "isbn", nullable = false))
     private List<LivroBasico> livros_do_autor = new ArrayList<>();
 
     @Override
