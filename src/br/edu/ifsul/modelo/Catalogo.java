@@ -46,37 +46,16 @@ public class Catalogo implements Serializable{
     private String descricao;
     @OneToMany(mappedBy = "catalogo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Livro> livros = new ArrayList<>();
-    @NotNull(message = "O catalogo não pode ser nulo")
+//    @NotNull(message = "O catalogo não pode ser nulo")
+//    @ManyToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
+//    @JoinColumn(name = "livraria", referencedColumnName = "id", nullable = false)
+//    @ForeignKey(name = "fk_catalogo_livraria_id")
+//    private Livraria livraria;
+    @NotNull(message = "O catalogo deve pertencer a uma operação!")
     @ManyToOne
     @JoinColumn(name = "livraria", referencedColumnName = "id", nullable = false)
-    @ForeignKey(name = "fk_catalogo_livraria_id")
+    @ForeignKey(name = "fk_catalogo_livraria_id")      
     private Livraria livraria;
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Catalogo other = (Catalogo) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
-    
 
     public Catalogo() {
     }
@@ -128,6 +107,30 @@ public class Catalogo implements Serializable{
 
     public void setLivraria(Livraria livraria) {
         this.livraria = livraria;
+    }
+     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Catalogo other = (Catalogo) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
     

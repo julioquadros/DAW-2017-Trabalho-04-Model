@@ -40,11 +40,11 @@ public class TestePersistirLivraria {
         boolean exception = false;
         try {
             Livraria l = new Livraria();
-            l.setNome("Teste Livraria");
-            l.setSite("http://www.livraria.com.br");
+            l.setNome("Teste Livraria 2");
+            l.setSite("http://www.livraria2.com.br");
             Catalogo c = new Catalogo();
-            c.setDescricao("Catalogo de Livros do Google");
-            c.setNome("Google Scholar");
+            c.setDescricao("Catalogo de Livros do If");
+            c.setNome("Google Ifsul");
             c.setLivraria(l);
             l.getCatalogos().add(c);
             em.getTransaction().begin();

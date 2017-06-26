@@ -62,7 +62,9 @@ public class Livro extends LivroBasico implements Serializable {
     
     public Livro() {
     }
-
+    
+    
+    
     public String getCodigoBarras() {
         return codigoBarras;
     }
